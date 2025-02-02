@@ -1,0 +1,35 @@
+* {
+    background-color: #EEEEEE;
+}
+
+.header__wrap {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.body__wrap {
+    text-align: center;
+}
+
+.back__button {
+    display: block;
+    margin-top: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    color: rgb(38, 81, 207);
+    text-decoration: none;
+}
+
+.form__input-button {
+    background-color: white;
+    cursor: pointer;
+    /* font-weight: bold; */
+    font-size: 15px;
+    border: none;
+    box-shadow: 2px 2px 3px grey;
+}
+
+.form__item {
+    background-color: #EEEEEE;
+}

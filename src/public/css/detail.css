@@ -1,0 +1,165 @@
+* {
+    background-color: #EEEEEE;
+}
+
+.reservation {
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.shop__detail {
+    width: 50%;
+}
+
+.shop__detail-title {
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.back__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back__button-submit {
+    height: 25px;
+    width: 25px;
+    background-color: white;
+    box-shadow: 2px 2px 3px grey;
+    border: none;
+    border-radius: 3px;
+}
+
+.back__button-submit:hover {
+    box-shadow: 1px 1px 2px grey;
+}
+
+.shop__name {
+    margin-left: 10px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.shop__img img {
+    width: 100%;
+}
+
+.tag {
+    margin-top: 15px;
+    display: flex;
+}
+
+.tag_area {
+    margin-right: 10px;
+}
+
+.shop__reservation {
+    margin-top: -50px;
+    padding: 20px 50px 20px 25px;
+    width: 50%;
+    margin-left: 5%;
+    background-color: #3366FF;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px grey;
+}
+
+h2 {
+    background-color: #3366FF;
+    color: white;
+}
+
+.form__group-content {
+    background-color: #3366FF;
+}
+
+.form__select {
+    margin-bottom: 15px;
+    background-color: #3366FF;
+}
+
+.select__date {
+    background-color: white;
+    width: 30%;
+    border: 1px solid white;
+    border-radius: 3%;
+    height: 25px;
+}
+
+.select__time {
+    background-color: white;
+    width: 100%;
+    border: 1px solid white;
+    border-radius: 3px;
+    height: 25px;
+}
+
+.select__number {
+    background-color: white;
+    width: 100%;
+    border: 1px solid white;
+    border-radius: 3px;
+    height: 25px;
+}
+
+.confirm-table {
+    background-color: #5D99FF;
+    width: 95%;
+    padding-top: 30px;
+    padding-left: 25px;
+    padding-bottom: 30px;
+    border-radius: 5px;
+}
+
+.confirm-table__inner {
+    color: white;
+}
+
+th {
+    background-color: #5D99FF;
+    text-align: left;
+    padding-bottom: 8px;
+}
+
+td {
+    background-color: #5D99FF;
+    padding-bottom: 8px;
+}
+
+.confirm-table__text {
+    background-color: #5D99FF;
+    color: white;
+    padding-left: 45px;
+}
+
+span {
+    background-color: #5D99FF;
+}
+
+.form__button {
+    background-color: #0033FF;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 50px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.form__button-submit {
+    background-color: #0033FF;
+    border: none;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.form__button-submit:hover {
+    font-weight: bolder;
+}
