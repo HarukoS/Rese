@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/delete', [ShopController::class, 'delete']);
 });
 
+//予約
 Route::middleware('auth')->group(function () {
     Route::post('/reservation', [ReservationController::class, 'store']);
 });
@@ -29,6 +30,11 @@ Route::middleware('auth')->group(function () {
 //myPageから予約の変更
 Route::middleware('auth')->group(function () {
     Route::post('/reservation/update', [ReservationController::class, 'updateReservation']);
+});
+
+//myPageからレビューの投稿
+Route::middleware('auth')->group(function () {
+    Route::post('/review', [ReservationController::class, 'storeReview']);
 });
 
 Route::middleware('auth')->group(function () {

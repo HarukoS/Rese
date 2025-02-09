@@ -40,7 +40,13 @@
             <img src="img/{{$shop['id']}}.jpg" alt="shop_image" />
         </div>
         <div class="card__content">
-            <div class="card__name">{{ $shop['shop_name'] }}</div>
+            <div class="card__title">
+                <div class="card__name">{{ $shop['shop_name'] }}</div>
+                @if ($shop['average_rate'] === null)
+                @else
+                <div class="card__rate">{{ number_format($shop->average_rate, 1) }} <span class="star5_rating" data-rate="{{ $shop['average_rate'] }}"></span></div>
+                @endif
+            </div>
             <div class="card__tag">#{{ $shop->area->area }} #{{ $shop->genre->genre }}</div>
             <div class="card__detail">
                 <form action="/detail" method="post">

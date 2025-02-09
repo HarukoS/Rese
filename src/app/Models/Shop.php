@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Review;
 
 class Shop extends Model
 {
@@ -45,5 +46,16 @@ class Shop extends Model
         if (!empty($shop_id)) {
             $query->where('id', $shop_id);
         }
+    }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
+
+    // Reservation経由でReviewを取得
+    public function reviews()
+    {
+        return $this->hasManyThrough(Review::class, Reservation::class);
     }
 }

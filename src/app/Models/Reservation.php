@@ -17,5 +17,10 @@ class Reservation extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function review()
+    {
+        return $this->hasOne(Review::class, 'reservation_id');
+    }
+
     protected $fillable = ['user_id', 'shop_id', 'date', 'time', 'number'];
 }

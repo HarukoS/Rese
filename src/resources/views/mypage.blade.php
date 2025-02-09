@@ -6,191 +6,296 @@
 
 @section('content')
 <div class="mypage">
-    <div class="my_reservation">
-        <div class="my_reservation__heading">
-            <h3>予約状況</h3>
-        </div>
-        @foreach ($reservations as $key => $reservation)
-        <div class="reservation-info">
-            <div class="reservation-info__heading">
-                <img class="img" src="img/clock.png" alt="clock">
-                <div class="reservation_number">予約{{$key+1}}</div>
-                <input type="radio" id="modal1Toggle" name="modalToggle" class="modal-toggle">
-                <a href="#modal1&{{$reservation->id}}" class="open-modal__button"><img class="img" src="img/cancel.png" alt="cancel"></a>
+    <div class="reservations">
+        <div class="my_reservation">
+            <div class="my_reservation__heading">
+                <h3>予約状況</h3>
             </div>
-            <table class="reservation-table__inner">
-                <tr class="reservation-table__row">
-                    <th class="reservation-table__header">Shop</th>
-                    <td class="reservation-table__text">{{ $reservation->shop->shop_name }}</td>
-                </tr>
-                <tr class="reservation-table__row">
-                    <th class="reservation-table__header">Date</th>
-                    <td class="reservation-table__text">{{ $reservation['date'] }}</td>
-                </tr>
-                <tr class="reservation-table__row">
-                    <th class="reservation-table__header">Time</th>
-                    <td class="reservation-table__text">{{ \Carbon\Carbon::parse($reservation['time'])->format('H:i') }}</td>
-                </tr>
-                <tr class="reservation-table__row">
-                    <th class="reservation-table__header">Number</th>
-                    <td class="reservation-table__text">{{ $reservation['number'] }}人</td>
-                </tr>
-            </table>
-            <div class="update__button">
-                <input type="radio" id="modal2Toggle" name="modalToggle" class="modal-toggle">
-                <a href="#modal2&{{$reservation->id}}" class="open-update__button">予約変更</a>
+            @foreach ($reservations as $key => $reservation)
+            <div class="reservation-info">
+                <div class="reservation-info__heading">
+                    <img class="img" src="img/clock.png" alt="clock">
+                    <div class="reservation_number">予約{{$key+1}}</div>
+                    <input type="radio" id="modal1Toggle" name="modalToggle" class="modal-toggle">
+                    <a href="#modal1&{{$reservation->id}}" class="open-modal__button"><img class="img" src="img/cancel.png" alt="cancel"></a>
+                </div>
+                <table class="reservation-table__inner">
+                    <tr class="reservation-table__row">
+                        <th class="reservation-table__header">Shop</th>
+                        <td class="reservation-table__text">{{ $reservation->shop->shop_name }}</td>
+                    </tr>
+                    <tr class="reservation-table__row">
+                        <th class="reservation-table__header">Date</th>
+                        <td class="reservation-table__text">{{ $reservation['date'] }}</td>
+                    </tr>
+                    <tr class="reservation-table__row">
+                        <th class="reservation-table__header">Time</th>
+                        <td class="reservation-table__text">{{ \Carbon\Carbon::parse($reservation['time'])->format('H:i') }}</td>
+                    </tr>
+                    <tr class="reservation-table__row">
+                        <th class="reservation-table__header">Number</th>
+                        <td class="reservation-table__text">{{ $reservation['number'] }}人</td>
+                    </tr>
+                </table>
+                <div class="update__button">
+                    <input type="radio" id="modal2Toggle" name="modalToggle" class="modal-toggle">
+                    <a href="#modal2&{{$reservation->id}}" class="open-update__button">予約変更</a>
+                </div>
             </div>
-        </div>
 
-        <div class="modal" id="modal1&{{$reservation->id}}">
-            <a href="#" class="modal__close-btn-submit"><img class="img_close-btn" src="img/close.png" alt="close"></a>
-            <div class="modal__message">予約をキャンセルしますか？</div>
-            <div class="modal__inner">
-                <form class="modal__detail-form" action="/reservation/delete" method="post">
-                    @csrf
-                    <div class="modal__content">
-                        <div class="modal-form__group">
-                            <label class="modal-form__label" for="">Shop</label>
-                            <p>{{ $reservation->shop->shop_name }}</p>
-                        </div>
+            <div class="modal" id="modal1&{{$reservation->id}}">
+                <a href="#" class="modal__close-btn-submit"><img class="img_close-btn" src="img/close.png" alt="close"></a>
+                <div class="modal__message">予約をキャンセルしますか？</div>
+                <div class="modal__inner">
+                    <form class="modal__detail-form" action="/reservation/delete" method="post">
+                        @csrf
+                        <div class="modal__content">
+                            <div class="modal-form__group">
+                                <label class="modal-form__label" for="">Shop</label>
+                                <p>{{ $reservation->shop->shop_name }}</p>
+                            </div>
 
-                        <div class="modal-form__group">
-                            <label class="modal-form__label" for="">Date</label>
-                            <p>{{ $reservation['date'] }}</p>
-                        </div>
+                            <div class="modal-form__group">
+                                <label class="modal-form__label" for="">Date</label>
+                                <p>{{ $reservation['date'] }}</p>
+                            </div>
 
-                        <div class="modal-form__group">
-                            <label class="modal-form__label" for="">Time</label>
-                            <p>{{ \Carbon\Carbon::parse($reservation['time'])->format('H:i') }}</p>
-                        </div>
+                            <div class="modal-form__group">
+                                <label class="modal-form__label" for="">Time</label>
+                                <p>{{ \Carbon\Carbon::parse($reservation['time'])->format('H:i') }}</p>
+                            </div>
 
-                        <div class="modal-form__group">
-                            <label class="modal-form__label" for="">Number</label>
-                            <p>{{ $reservation['number'] }}人</p>
+                            <div class="modal-form__group">
+                                <label class="modal-form__label" for="">Number</label>
+                                <p>{{ $reservation['number'] }}人</p>
+                            </div>
                         </div>
-                    </div>
-                    <input type="hidden" name="id" value="{{ $reservation->id }}">
-                    <input class="modal-form__btn" type="submit" value="キャンセルする">
-                </form>
+                        <input type="hidden" name="id" value="{{ $reservation->id }}">
+                        <input class="modal-form__btn" type="submit" value="キャンセルする">
+                    </form>
+                </div>
             </div>
-        </div>
 
-        <div class="modal" id="modal2&{{$reservation->id}}">
-            <a href="#" class="modal__close-btn-submit"><img class="img_close-btn" src="img/close.png" alt="close"></a>
-            <div class="modal__message">予約を変更しますか？</div>
-            <div class="modal__inner">
-                <form class="modal__detail-form" action="/reservation/update" method="post">
-                    @csrf
-                    <div class="modal__content">
-                        <div class="modal-form__group">
-                            <label class="modal-form__label" for="">Shop</label>
-                            <p>{{ $reservation->shop->shop_name }}</p>
-                        </div>
+            <div class="modal" id="modal2&{{$reservation->id}}">
+                <a href="#" class="modal__close-btn-submit"><img class="img_close-btn" src="img/close.png" alt="close"></a>
+                <div class="modal__message">予約を変更しますか？</div>
+                <div class="modal__inner">
+                    <form class="modal__detail-form" action="/reservation/update" method="post">
+                        @csrf
+                        <div class="modal__content">
+                            <div class="modal-form__group">
+                                <label class="modal-form__label" for="">Shop</label>
+                                <p>{{ $reservation->shop->shop_name }}</p>
+                            </div>
 
-                        <div class="modal-form__group">
-                            <label class="modal-form__label" for="">Date</label>
-                            <input class="select__date" id="selectDate" type="date" name="date" value="{{ $reservation['date'] }}">
-                        </div>
+                            <div class="modal-form__group">
+                                <label class="modal-form__label" for="">Date</label>
+                                <input class="select__date" id="selectDate" type="date" name="date" value="{{ $reservation['date'] }}">
+                            </div>
 
-                        <div class="modal-form__group">
-                            <label class="modal-form__label" for="">Time</label>
-                            <select class="select__time" id="selectTime" name="time">
-                                <option value="{{ $reservation['time'] }}" selected>{{ \Carbon\Carbon::parse($reservation['time'])->format('H:i') }}</option>
-                                <option value="00:00">00:00</option>
-                                <option value="00:30">00:30</option>
-                                <option value="01:00">01:00</option>
-                                <option value="01:30">01:30</option>
-                                <option value="02:00">02:00</option>
-                                <option value="02:30">02:30</option>
-                                <option value="03:00">03:00</option>
-                                <option value="03:30">03:30</option>
-                                <option value="04:00">04:00</option>
-                                <option value="04:30">04:30</option>
-                                <option value="05:00">05:00</option>
-                                <option value="05:30">05:30</option>
-                                <option value="06:00">06:00</option>
-                                <option value="06:30">06:30</option>
-                                <option value="07:00">07:00</option>
-                                <option value="07:30">07:30</option>
-                                <option value="08:00">08:00</option>
-                                <option value="08:30">08:30</option>
-                                <option value="09:00">09:00</option>
-                                <option value="09:30">09:30</option>
-                                <option value="10:00">10:00</option>
-                                <option value="10:30">10:30</option>
-                                <option value="11:00">11:00</option>
-                                <option value="11:30">11:30</option>
-                                <option value="12:00">12:00</option>
-                                <option value="12:30">12:30</option>
-                                <option value="13:00">13:00</option>
-                                <option value="13:30">13:30</option>
-                                <option value="14:00">14:00</option>
-                                <option value="14:30">14:30</option>
-                                <option value="15:00">15:00</option>
-                                <option value="15:30">15:30</option>
-                                <option value="16:00">16:00</option>
-                                <option value="16:30">16:30</option>
-                                <option value="17:00">17:00</option>
-                                <option value="17:30">17:30</option>
-                                <option value="18:00">18:00</option>
-                                <option value="18:30">18:30</option>
-                                <option value="19:00">19:00</option>
-                                <option value="19:30">19:30</option>
-                                <option value="20:00">20:00</option>
-                                <option value="20:30">20:30</option>
-                                <option value="21:00">21:00</option>
-                                <option value="21:30">21:30</option>
-                                <option value="22:00">22:00</option>
-                                <option value="22:30">22:30</option>
-                                <option value="23:00">23:00</option>
-                                <option value="23:30">23:30</option>
-                            </select>
-                        </div>
+                            <div class="modal-form__group">
+                                <label class="modal-form__label" for="">Time</label>
+                                <select class="select__time" id="selectTime" name="time">
+                                    <option value="{{ $reservation['time'] }}" selected>{{ \Carbon\Carbon::parse($reservation['time'])->format('H:i') }}</option>
+                                    <option value="00:00">00:00</option>
+                                    <option value="00:30">00:30</option>
+                                    <option value="01:00">01:00</option>
+                                    <option value="01:30">01:30</option>
+                                    <option value="02:00">02:00</option>
+                                    <option value="02:30">02:30</option>
+                                    <option value="03:00">03:00</option>
+                                    <option value="03:30">03:30</option>
+                                    <option value="04:00">04:00</option>
+                                    <option value="04:30">04:30</option>
+                                    <option value="05:00">05:00</option>
+                                    <option value="05:30">05:30</option>
+                                    <option value="06:00">06:00</option>
+                                    <option value="06:30">06:30</option>
+                                    <option value="07:00">07:00</option>
+                                    <option value="07:30">07:30</option>
+                                    <option value="08:00">08:00</option>
+                                    <option value="08:30">08:30</option>
+                                    <option value="09:00">09:00</option>
+                                    <option value="09:30">09:30</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="10:30">10:30</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="11:30">11:30</option>
+                                    <option value="12:00">12:00</option>
+                                    <option value="12:30">12:30</option>
+                                    <option value="13:00">13:00</option>
+                                    <option value="13:30">13:30</option>
+                                    <option value="14:00">14:00</option>
+                                    <option value="14:30">14:30</option>
+                                    <option value="15:00">15:00</option>
+                                    <option value="15:30">15:30</option>
+                                    <option value="16:00">16:00</option>
+                                    <option value="16:30">16:30</option>
+                                    <option value="17:00">17:00</option>
+                                    <option value="17:30">17:30</option>
+                                    <option value="18:00">18:00</option>
+                                    <option value="18:30">18:30</option>
+                                    <option value="19:00">19:00</option>
+                                    <option value="19:30">19:30</option>
+                                    <option value="20:00">20:00</option>
+                                    <option value="20:30">20:30</option>
+                                    <option value="21:00">21:00</option>
+                                    <option value="21:30">21:30</option>
+                                    <option value="22:00">22:00</option>
+                                    <option value="22:30">22:30</option>
+                                    <option value="23:00">23:00</option>
+                                    <option value="23:30">23:30</option>
+                                </select>
+                            </div>
 
-                        <div class="modal-form__group">
-                            <label class="modal-form__label" for="">Number</label>
-                            <select class="select__number" id="selectNumber" name="number">
-                                <option value="{{ $reservation['number'] }}" selected>{{ $reservation['number'] }}</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                                <option value="13">13</option>
-                                <option value="14">14</option>
-                                <option value="15">15</option>
-                                <option value="16">16</option>
-                                <option value="17">17</option>
-                                <option value="18">18</option>
-                                <option value="19">19</option>
-                                <option value="20">20</option>
-                                <option value="21">21</option>
-                                <option value="22">22</option>
-                                <option value="23">23</option>
-                                <option value="24">24</option>
-                                <option value="25">25</option>
-                                <option value="26">26</option>
-                                <option value="27">27</option>
-                                <option value="28">28</option>
-                                <option value="29">29</option>
-                                <option value="30">30</option>
-                            </select>
+                            <div class="modal-form__group">
+                                <label class="modal-form__label" for="">Number</label>
+                                <select class="select__number" id="selectNumber" name="number">
+                                    <option value="{{ $reservation['number'] }}" selected>{{ $reservation['number'] }}</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <input type="hidden" name="id" value="{{ $reservation->id }}">
-                    <input class="modal-form__btn" type="submit" value="変更する">
-                </form>
+                        <input type="hidden" name="id" value="{{ $reservation->id }}">
+                        <input class="modal-form__btn" type="submit" value="変更する">
+                    </form>
+                </div>
             </div>
-        </div>
 
-        @endforeach
+            @endforeach
+        </div>
+        <div class="after_reservation">
+            <div class="after_reservation__heading">
+                <h3>予約履歴</h3>
+            </div>
+            @foreach ($after_reservations as $key => $after_reservation)
+            <div class="after_reservation-info">
+                <div class="after_reservation-info__heading">
+                    <img class="img2" src="img/clock.png" alt="clock">
+                    <div class="after_reservation_number">予約履歴{{$key+1}}</div>
+                </div>
+                <table class="after_reservation-table__inner">
+                    <tr class="after_reservation-table__row">
+                        <th class="after_reservation-table__header">Shop</th>
+                        <td class="after_reservation-table__text">{{ $after_reservation->shop->shop_name }}</td>
+                    </tr>
+                    <tr class="after_reservation-table__row">
+                        <th class="after_reservation-table__header">Date</th>
+                        <td class="after_reservation-table__text">{{ $after_reservation['date'] }}</td>
+                    </tr>
+                    <tr class="after_reservation-table__row">
+                        <th class="after_reservation-table__header">Time</th>
+                        <td class="after_reservation-table__text">{{ \Carbon\Carbon::parse($after_reservation['time'])->format('H:i') }}</td>
+                    </tr>
+                    <tr class="after_reservation-table__row">
+                        <th class="after_reservation-table__header">Number</th>
+                        <td class="after_reservation-table__text">{{ $after_reservation['number'] }}人</td>
+                    </tr>
+                </table>
+                @if($after_reservation->review)
+                <div class="review__button">
+                    <a class="after-review__button">レビュー済み</a>
+                </div>
+                @else
+                <div class="review__button">
+                    <input type="radio" id="modal3Toggle" name="modalToggle" class="modal-toggle">
+                    <a href="#modal3&{{$after_reservation->id}}" class="open-review__button">レビューする</a>
+                </div>
+                @endif
+            </div>
+
+            <div class="modal3" id="modal3&{{$after_reservation->id}}">
+                <a href="#" class="modal__close-btn-submit"><img class="img_close-btn" src="img/close.png" alt="close"></a>
+                <div class="modal__message">レビューの投稿</div>
+                <div class="modal3__inner">
+                    <form class="modal3__detail-form" action="/review" method="post">
+                        @csrf
+                        <div class="modal__content">
+                            <div class="modal-form__group">
+                                <div class="form__group-title">
+                                    <span class="modal-form__label">ハンドルネーム</span>
+                                </div>
+                                <div class="form__input--text">
+                                    <input type="text" name="handle">
+                                </div>
+                            </div>
+
+                            <div class="modal-form__group">
+                                <div class="form__group-title">
+                                    <span class="modal-form__label">評価</span>
+                                </div>
+                                <div class="form__rating">
+                                    <div class="stars">
+                                        <input type="radio" id="radio1" name="rate" value="5">
+                                        <label for="radio1">5 <span class="star5_rating" data-rate="5"></span></label>
+                                    </div>
+                                    <div class="stars">
+                                        <input type="radio" id="radio2" name="rate" value="4">
+                                        <label for="radio2">4 <span class="star5_rating" data-rate="4"></span></label>
+                                    </div>
+                                    <div class="stars">
+                                        <input type="radio" id="radio3" name="rate" value="3">
+                                        <label for="radio3">3 <span class="star5_rating" data-rate="3"></span></label>
+                                    </div>
+                                    <div class="stars">
+                                        <input type="radio" id="radio4" name="rate" value="2">
+                                        <label for="radio4">2 <span class="star5_rating" data-rate="2"></span></label>
+                                    </div>
+                                    <div class="stars">
+                                        <input type="radio" id="radio5" name="rate" value="1">
+                                        <label for="radio5">1 <span class="star5_rating" data-rate="1"></span></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal-form__group">
+                                <div class="form__group-title">
+                                    <span class="modal-form__label">コメント</span>
+                                </div>
+                                <div class="form__input--text">
+                                    <textarea name="comment"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="reservation_id" value="{{$after_reservation->id}}">
+                        <input class="modal3-form__btn" type="submit" value="投稿する">
+
+                    </form>
+                </div>
+            </div>
+            @endforeach
+
+        </div>
     </div>
 
     <div class="my_favorite">

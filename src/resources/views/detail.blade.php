@@ -8,20 +8,34 @@
 @foreach ($shop_details as $shop_detail)
 <div class="reservation">
     <div class="shop__detail">
-        <div class="shop__detail-title">
-            <div class="back__button">
-                <button class="back__button-submit" type="button" onClick="history.back()">&lt;</button>
+        <div class="shop__detail-introduction">
+            <div class="shop__detail-title">
+                <div class="back__button">
+                    <button class="back__button-submit" type="button" onClick="history.back()">&lt;</button>
+                </div>
+                <div class="shop__name">{{ $shop_detail['shop_name'] }}</div>
             </div>
-            <div class="shop__name">{{ $shop_detail['shop_name'] }}</div>
+            <div class="shop__img">
+                <img src="img/{{$shop_detail['id']}}.jpg" alt="shop_img" />
+            </div>
+            <div class="tag">
+                <p class="tag_area">#{{ $shop_detail->area->area }}</p>
+                <p class="tag_genre">#{{ $shop_detail->genre->genre }}</p>
+            </div>
+            <div class="shop__introduction">{{ $shop_detail['feature'] }}</div>
         </div>
-        <div class="shop__img">
-            <img src="img/{{$shop_detail['id']}}.jpg" alt="shop_img" />
+        <div class="shop__detail-review">
+            <div>
+                <h2 class="shop__detail-review-heading">ユーザーレビュー</h2>
+            </div>
+            @foreach ($shop_reviews->reviews as $review)
+            <div class="shop__detail-review-content">
+                <p>{{ $review->handle }}さん</p>
+                <p>評価：{{ $review->rate }} <span class="star5_rating" data-rate="{{ $review->rate }}"></span></p>
+                <div>コメント：{{ $review->comment }}</div>
+            </div>
+            @endforeach
         </div>
-        <div class="tag">
-            <p class="tag_area">#{{ $shop_detail->area->area }}</p>
-            <p class="tag_genre">#{{ $shop_detail->genre->genre }}</p>
-        </div>
-        <div class="shop__introduction">{{ $shop_detail['feature'] }}</div>
     </div>
     <div class="shop__reservation">
         <div class="reservation-form__heading">
@@ -142,6 +156,13 @@
                         </table>
                     </div>
                 </div>
+                @if (count($errors) > 0)
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+                @endif
                 <div class="form__button">
                     <button class="form__button-submit" type="submit">予約する</button>
                 </div>

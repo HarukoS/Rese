@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Reservation;
+use App\Models\Review;
+use App\Http\Requests\ReservationRequest;
 
 class ReservationController extends Controller
 {
-    public function store(Request $request)
+    public function store(ReservationRequest $request)
     {
         $reservation = new Reservation;
         $reservation->user_id = Auth::user()->id;
@@ -28,11 +30,23 @@ class ReservationController extends Controller
         return redirect('/mypage');
     }
 
-    public function updateReservation(Request $request)
+    public function updateReservation(ReservationRequest $request)
     {
         $reservation = Reservation::find($request->id);
         $reservation->fill($request->input());
         $reservation->save();
+
+        return redirect('/mypage');
+    }
+
+    public function storeReview(Request $request)
+    {
+        $review = new Review;
+        $review->reservation_id = $request->reservation_id;
+        $review->handle = $request->handle;
+        $review->rate = $request->rate;
+        $review->comment = $request->comment;
+        $review->save();
 
         return redirect('/mypage');
     }

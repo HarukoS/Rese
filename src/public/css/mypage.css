@@ -4,11 +4,12 @@
 
 .mypage {
     display: flex;
+    flex-direction: row;
     margin-left: 7%;
     margin-right: 7%;
 }
 
-.my_reservation {
+.reservations {
     width: 45%;
     padding-top: 60px;
 }
@@ -43,14 +44,9 @@
     color: white;
 }
 
-th {
+.reservation-table__header {
     background-color: #3366FF;
     text-align: left;
-    padding-bottom: 10px;
-}
-
-td {
-    background-color: #3366FF;
     padding-bottom: 10px;
 }
 
@@ -58,6 +54,7 @@ td {
     background-color: #3366FF;
     color: white;
     padding-left: 45px;
+    padding-bottom: 10px;
 }
 
 .update__button {
@@ -81,6 +78,81 @@ td {
     font-weight: bold;
 }
 
+.after_reservation {
+    margin-top: 50px;
+}
+
+.after_reservation-info {
+    background-color: #3366FF;
+    width: 80%;
+    padding: 30px 25px;
+    margin-bottom: 25px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px grey;
+}
+
+.img2 {
+    background-color: #3366FF;
+    margin-right: 50px;
+}
+
+.after_reservation-info__heading {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: flex-start;
+    background-color: #3366FF;
+}
+
+.after_reservation_number {
+    background-color: #3366FF;
+    color: white;
+}
+
+.reservation-table__inner {
+    color: white;
+}
+
+.after_reservation-table__header {
+    background-color: #3366FF;
+    text-align: left;
+    padding-bottom: 10px;
+    color: white;
+}
+
+.after_reservation-table__text {
+    background-color: #3366FF;
+    color: white;
+    padding-left: 45px;
+    padding-bottom: 10px;
+}
+
+.review__button {
+    margin-left: 70%;
+    width: 120px;
+    height: 28px;
+    text-align: center;
+    border-radius: 3px;
+    background-color: white;
+}
+
+.after-review__button {
+    text-decoration: none;
+    font-size: 15px;
+    padding: 0 auto;
+    color: grey;
+}
+.open-review__button {
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 15px;
+    padding: 0 auto;
+    color: black;
+}
+
+.open-review__button:hover {
+    font-weight: bold;
+}
+
 .my_favorite {
     width: 55%;
     margin-bottom: 50px;
@@ -90,18 +162,12 @@ td {
     width: 90%;
     display: grid;
     grid-template-columns: 350px 350px;
-    /* grid-template-rows: 350px 350px; */
     gap: 65px;
-    /* flex-wrap: wrap; */
 }
 
 .shop__card {
-    /* width: 30%; */
-    /* height: 200px; */
     border-radius: 2%;
     box-shadow: 2px 2px 3px grey;
-    /* margin-bottom: 20px; */
-    /* margin-right: 40px; */
 }
 
 .card__img img {
@@ -291,4 +357,117 @@ select {
 
 .img_close-btn {
     background-color: white;
+}
+
+/* モーダル（レビュー） */
+.modal3 {
+    position: fixed;
+    top: 10%;
+    left: 30%;
+    visibility: hidden;
+    width: 800px;
+    height: 700px;
+    opacity: 0;
+    background-color: white;
+    box-shadow: 2px 2px 3px grey;
+    border-radius: 5px;
+}
+
+.modal3:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal3__inner {
+    margin-top: 90px;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    width: 70%;
+    transform: translate(-50%, -50%);
+}
+
+.form__group-title,
+.form__input--text,
+.stars {
+    background-color: #3366FF;
+}
+
+textarea {
+    width: 320px;
+    height: 200px;
+    background-color: white;
+}
+
+label {
+    background-color: #3366FF;
+}
+
+.star5_rating {
+    position: relative;
+    z-index: 0;
+    display: inline-block;
+    white-space: nowrap;
+    color: #CCCCCC;
+    background-color: #3366FF;
+}
+
+.star5_rating:before,
+.star5_rating:after {
+    color: lightgray;
+    content: '★★★★★';
+}
+
+.star5_rating:after {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    color: orange;
+}
+
+/* 星5 */
+.star5_rating[data-rate="5"]:after {
+    width: 100%;
+}
+
+/* 星4 */
+.star5_rating[data-rate="4"]:after {
+    width: 80%;
+}
+
+/* 星3 */
+.star5_rating[data-rate="3"]:after {
+    width: 60%;
+}
+
+/* 星2 */
+.star5_rating[data-rate="2"]:after {
+    width: 40%;
+}
+
+/* 星1 */
+.star5_rating[data-rate="1"]:after {
+    width: 20%;
+}
+
+.modal3-form__btn {
+    margin-top: 30px;
+    margin-left: 38%;
+    padding: 0 auto;
+    width: 130px;
+    height: 30px;
+    border: none;
+    font-size: 15px;
+    color: white;
+    background-color: #3366FF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal3-form__btn:hover {
+    background-color: blue;
 }

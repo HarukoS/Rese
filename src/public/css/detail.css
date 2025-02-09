@@ -56,11 +56,80 @@
     margin-right: 10px;
 }
 
+.shop__detail-review {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.shop__detail-review-heading {
+    background-color: #EEEEEE;
+    color: black;
+}
+
+.shop__detail-review-content {
+    margin-bottom: 20px;
+}
+
+p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.star5_rating {
+    position: relative;
+    z-index: 0;
+    display: inline-block;
+    white-space: nowrap;
+    background-color: #EEEEEE;
+}
+
+.star5_rating:before,
+.star5_rating:after {
+    color: lightgray;
+    content: '★★★★★';
+}
+
+.star5_rating:after {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    color: orange;
+}
+
+/* 星5 */
+.star5_rating[data-rate="5"]:after {
+    width: 100%;
+}
+
+/* 星4 */
+.star5_rating[data-rate="4"]:after {
+    width: 68%;
+}
+
+/* 星3 */
+.star5_rating[data-rate="3"]:after {
+    width: 50%;
+}
+
+/* 星2 */
+.star5_rating[data-rate="2"]:after {
+    width: 35%;
+}
+
+/* 星1 */
+.star5_rating[data-rate="1"]:after {
+    width: 20%;
+}
+
 .shop__reservation {
     margin-top: -50px;
     padding: 20px 50px 20px 25px;
     width: 50%;
     margin-left: 5%;
+    height: 800px;
     background-color: #3366FF;
     position: relative;
     border-radius: 5px;
