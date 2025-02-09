@@ -366,7 +366,7 @@ select {
     left: 30%;
     visibility: hidden;
     width: 800px;
-    height: 700px;
+    height: 800px;
     opacity: 0;
     background-color: white;
     box-shadow: 2px 2px 3px grey;
@@ -385,6 +385,10 @@ select {
     left: 50%;
     width: 70%;
     transform: translate(-50%, -50%);
+}
+
+.modal_3__detail-form {
+    height: 650px;
 }
 
 .form__group-title,
@@ -470,4 +474,14 @@ label {
 
 .modal3-form__btn:hover {
     background-color: blue;
+}
+
+ul {
+    color: red;
+    padding-left: 0;
+}
+
+li {
+    list-style: none;
+    background-color: #3366FF;
 }

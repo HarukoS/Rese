@@ -22,7 +22,8 @@ class ShopController extends Controller
             $shops = Shop::with('reviews')->get()->map(function ($shop) {
                 $reviews = $shop->reviews;
                 $averageRate = $reviews->avg('rate');
-                $shop->setAttribute('average_rate', $averageRate);
+                $roundedAverageRate = $averageRate !== null ? round($averageRate) : null;
+                $shop->setAttribute('average_rate', $roundedAverageRate);
                 return $shop;
             });
             return view('index', compact('shops', 'areas', 'genres', 'user_id', 'likes'));
@@ -33,7 +34,8 @@ class ShopController extends Controller
             $shops = Shop::with('reviews')->get()->map(function ($shop) {
                 $reviews = $shop->reviews;
                 $averageRate = $reviews->avg('rate');
-                $shop->setAttribute('average_rate', $averageRate);
+                $roundedAverageRate = $averageRate !== null ? round($averageRate) : null;
+                $shop->setAttribute('average_rate', $roundedAverageRate);
                 return $shop;
             });
             return view('index', compact('shops', 'areas', 'genres'));
@@ -44,8 +46,14 @@ class ShopController extends Controller
     {
         if (Auth::check()) {
 
-            $shops = Shop::with(['area', 'genre'])->AreaSearch($request->area_id)
-                ->GenreSearch($request->genre_id)->KeywordSearch($request->keyword)->get();
+            $shops = Shop::with(['area', 'genre', 'reviews'])->AreaSearch($request->area_id)
+                ->GenreSearch($request->genre_id)->KeywordSearch($request->keyword)->get()->map(function ($shop) {
+                $reviews = $shop->reviews;
+                $averageRate = $reviews->avg('rate');
+                $roundedAverageRate = $averageRate !== null ? round($averageRate) : null;
+                $shop->setAttribute('average_rate', $roundedAverageRate);
+                return $shop;
+            });
             $areas = Area::all();
             $genres = Genre::all();
             $user_id = Auth::user()->id;
@@ -53,8 +61,14 @@ class ShopController extends Controller
 
             return view('index', compact('shops', 'areas', 'genres', 'user_id', 'likes'));
         } else {
-            $shops = Shop::with(['area', 'genre'])->AreaSearch($request->area_id)
-                ->GenreSearch($request->genre_id)->KeywordSearch($request->keyword)->get();
+            $shops = Shop::with(['area', 'genre', 'reviews'])->AreaSearch($request->area_id)
+                ->GenreSearch($request->genre_id)->KeywordSearch($request->keyword)->get()->map(function ($shop) {
+                $reviews = $shop->reviews;
+                $averageRate = $reviews->avg('rate');
+                $roundedAverageRate = $averageRate !== null ? round($averageRate) : null;
+                $shop->setAttribute('average_rate', $roundedAverageRate);
+                return $shop;
+            });
             $areas = Area::all();
             $genres = Genre::all();
 

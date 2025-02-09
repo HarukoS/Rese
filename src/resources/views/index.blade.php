@@ -44,12 +44,12 @@
                 <div class="card__name">{{ $shop['shop_name'] }}</div>
                 @if ($shop['average_rate'] === null)
                 @else
-                <div class="card__rate">{{ number_format($shop->average_rate, 1) }} <span class="star5_rating" data-rate="{{ $shop['average_rate'] }}"></span></div>
+                <div class="card__rate">{{ $shop->average_rate }} <span class="star5_rating" data-rate="{{ $shop['average_rate'] }}"></span></div>
                 @endif
             </div>
             <div class="card__tag">#{{ $shop->area->area }} #{{ $shop->genre->genre }}</div>
             <div class="card__detail">
-                <form action="/detail" method="post">
+                <form action="/detail" method="get">
                     @csrf
                     <div class="card__detail-btn">
                         <input type="hidden" name="shop_id" value="{{ $shop['id'] }}">

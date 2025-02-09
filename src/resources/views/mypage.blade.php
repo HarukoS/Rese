@@ -285,6 +285,14 @@
                                     <textarea name="comment"></textarea>
                                 </div>
                             </div>
+
+                            @if (count($errors) > 0)
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{$error}}</li>
+                                @endforeach
+                            </ul>
+                            @endif
                         </div>
 
                         <input type="hidden" name="reservation_id" value="{{$after_reservation->id}}">

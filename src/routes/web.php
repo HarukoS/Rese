@@ -10,7 +10,7 @@ use App\Http\Controllers\UserController;
 Route::get('/', [ShopController::class, 'index']);
 
 Route::get('/search', [ShopController::class, 'search']);
-Route::post('/detail', [ShopController::class, 'detail']);
+Route::get('/detail', [ShopController::class, 'detail']);
 
 Route::middleware('auth')->group(function () {
     Route::post('/like', [ShopController::class, 'like']);
@@ -40,14 +40,11 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/mypage', [UserController::class, 'mypage']);
 });
+
 Route::middleware('auth')->group(function () {
     Route::post('/deletelike', [ShopController::class, 'deleteLike']);
 });
 
 Route::get('/done', function () {
     return view('done');
-});
-
-Route::get('/detail', function () {
-    return view('detail');
 });

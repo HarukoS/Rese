@@ -147,11 +147,11 @@
                             </tr>
                             <tr class="confirm-table__row">
                                 <th class="confirm-table__header">Time</th>
-                                <td class="confirm-table__text"><span id="outputTime"></span></td>
+                                <td class="confirm-table__text"><span id="outputTime">{{ $initialTime ?? '00:00' }}</span></td>
                             </tr>
                             <tr class="confirm-table__row">
                                 <th class="confirm-table__header">Number</th>
-                                <td class="confirm-table__text"><span id="outputNumber"></span></td>
+                                <td class="confirm-table__text"><span id="outputNumber">1人</span></td>
                             </tr>
                         </table>
                     </div>
@@ -178,10 +178,19 @@
         document.getElementById('outputDate').textContent = selectedValue;
     });
 
+    document.addEventListener('DOMContentLoaded', function() {
+        var initialTime = "{{ $initialTime ?? '00:00' }}";
+        document.getElementById('outputTime').textContent = initialTime;
+    });
+
     document.getElementById('selectTime').addEventListener('change', function() {
         var selectedValue = this.value;
 
         document.getElementById('outputTime').textContent = selectedValue;
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('outputNumber').textContent = '1人';
     });
 
     document.getElementById('selectNumber').addEventListener('change', function() {

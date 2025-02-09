@@ -106,17 +106,17 @@ p {
 
 /* 星4 */
 .star5_rating[data-rate="4"]:after {
-    width: 68%;
+    width: 80%;
 }
 
 /* 星3 */
 .star5_rating[data-rate="3"]:after {
-    width: 50%;
+    width: 60%;
 }
 
 /* 星2 */
 .star5_rating[data-rate="2"]:after {
-    width: 35%;
+    width: 40%;
 }
 
 /* 星1 */
@@ -139,6 +139,10 @@ p {
 h2 {
     background-color: #3366FF;
     color: white;
+}
+
+.form__group {
+    background-color: #3366FF;
 }
 
 .form__group-content {
@@ -231,4 +235,14 @@ span {
 
 .form__button-submit:hover {
     font-weight: bolder;
+}
+
+ul {
+    color: red;
+    padding-left: 0;
+}
+
+li {
+    list-style:none;
+    background-color:#3366FF;
 }

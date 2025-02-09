@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Reservation;
 use App\Models\Review;
 use App\Http\Requests\ReservationRequest;
+use App\Http\Requests\ReviewRequest;
 
 class ReservationController extends Controller
 {
@@ -39,7 +40,7 @@ class ReservationController extends Controller
         return redirect('/mypage');
     }
 
-    public function storeReview(Request $request)
+    public function storeReview(ReviewRequest $request)
     {
         $review = new Review;
         $review->reservation_id = $request->reservation_id;
