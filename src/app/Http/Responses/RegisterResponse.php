@@ -24,9 +24,9 @@ class RegisterResponse implements RegisterResponseContract
 
     public function toResponse($request)
     {
-        $this->guard->logout(); // logs out the session
+        // $this->guard->logout(); // logs out the session
         return $request->wantsJson()
             ? new JsonResponse('', 201)
-            : redirect()->intended(Fortify::redirects('register'));
+            : redirect()->route('verification.notice');
     }
 }

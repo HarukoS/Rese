@@ -48,6 +48,11 @@ class FortifyServiceProvider extends ServiceProvider
             return view('auth.login');
         });
 
+        // ユーザー登録した後に表示されるView
+        Fortify::verifyEmailView(function () {
+            return view('auth.verify-email');
+        });
+
         //login処理の実行回数を1分あたり10回までに制限
         RateLimiter::for('login', function (Request $request) {
             $email = (string) $request->email;
