@@ -96,3 +96,7 @@
     color: #fff;
     cursor: pointer;
 }
+
+.form__button-submit:hover {
+    background-color: blue;
+}

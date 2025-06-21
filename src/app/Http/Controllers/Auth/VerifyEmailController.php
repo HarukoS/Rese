@@ -20,10 +20,10 @@ class VerifyEmailController extends Controller
      */
     public function verify(Request $request)
     {
-        // すでに確認済みの場合はリダイレクト
-        if ($request->user()->hasVerifiedEmail()) {
-            return redirect()->route('home');  // 適切なリダイレクト先に変更
-        }
+        // // すでに確認済みの場合はリダイレクト
+        // if ($request->user()->hasVerifiedEmail()) {
+        //     return redirect()->route('home');  // 適切なリダイレクト先に変更
+        // }
 
         // メールアドレスを確認済みにマーク
         $request->user()->markEmailAsVerified();

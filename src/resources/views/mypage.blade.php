@@ -233,7 +233,7 @@
                 @endif
             </div>
 
-            <div class="modal3" id="modal3&{{$after_reservation->id}}">
+            <div class="modal3" id="modal3&{{$after_reservation->id}}" style="max-height: 90vh; overflow-y: auto;">
                 <a href="#" class="modal__close-btn-submit"><img class="img_close-btn" src="img/close.png" alt="close"></a>
                 <div class="modal__message">レビューの投稿</div>
                 <div class="modal3__inner">
@@ -317,14 +317,14 @@
             @foreach ($likes as $like)
             <div class="shop__card">
                 <div class="card__img">
-                    <img src="img/{{$like['shop_id']}}.jpg" alt="shop_img" />
+                    <img src="{{ asset('storage/shop_images/' . $like['shop_id'] . '.jpg') }}" alt="shop_img" />
                 </div>
                 <div class="card__content">
                     <div class="card__name">{{ $like->shop->shop_name }}</div>
                     <div class="card__tag">#{{ $like->shop->area->area }} #{{ $like->shop->genre->genre }}</div>
                     <div class="card__detail">
                         <div class="card__detail-btn">
-                            <form action="/detail" method="post">
+                            <form action="/detail" method="get">
                                 @csrf
                                 <input type="hidden" name="shop_id" value="{{ $like->shop->id }}">
                                 <button class="card__detail-btn-submit" type="submit">詳しく見る</button>

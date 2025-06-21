@@ -21,7 +21,9 @@ class ReservationController extends Controller
         $reservation->number = $request->number;
         $reservation->save();
 
-        return view('/done');
+        $user_role = Auth::user()->role;
+
+        return view('/done', compact('user_role'));
     }
 
     public function deleteReservation(Request $request)
@@ -34,7 +36,7 @@ class ReservationController extends Controller
     public function updateReservation(ReservationRequest $request)
     {
         $reservation = Reservation::find($request->id);
-        $reservation->fill($request->input());
+        $reservation->fill($request->only(['date', 'time', 'number']));
         $reservation->save();
 
         return redirect('/mypage');

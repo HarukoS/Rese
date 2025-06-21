@@ -50,7 +50,6 @@
 .form__group-title {
     margin-right: 10px;
     text-align: left;
-    /* color: #666666; */
     background-color: white;
 }
 
@@ -95,4 +94,8 @@
     background: #3366FF;
     color: #fff;
     cursor: pointer;
+}
+
+.form__button-submit:hover {
+    background-color: blue;
 }

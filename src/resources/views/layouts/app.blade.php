@@ -26,7 +26,7 @@
             <div class="logo">Rese</div>
             <div class="nav-container">
                 <li><a href="/">Home</a></li>
-                @if (Auth::check())
+                @if (Auth::check() && Auth::user()->hasVerifiedEmail())
                 <li>
                     <form action="/logout" method="post">
                         @csrf
@@ -34,6 +34,16 @@
                     </form>
                 </li>
                 <li><a href="/mypage">Mypage</a></li>
+                @isset($user_role)
+                @if ($user_role == 1)
+                <li><a href="/admin">Shop Owner Registration（管理者用）</a></li>
+                <li><a href="/sendmail">Send emails（管理者用）</a></li>
+                @elseif ($user_role == 2)
+                <li><a href="/myshop">Myshops（店舗代表者用）
+                </a></li>
+                @elseif ($user_role == NULL)
+                @endif
+                @endisset
                 @else
                 <li><a href="/register">Registration</a></li>
                 <li><a href="/login">Login</a></li>

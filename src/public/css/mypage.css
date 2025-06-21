@@ -172,6 +172,8 @@
 
 .card__img img {
     width: 100%;
+    aspect-ratio: 2 / 1.1;
+    object-fit: cover;
     border-top-left-radius: 2%;
     border-top-right-radius: 2%;
 }
@@ -279,7 +281,7 @@
 }
 
 .modal__message {
-    margin-top: 20px;
+    /* margin-top: 20px; */
     text-align: center;
     background-color: white;
     font-size: 22px;

@@ -16,7 +16,7 @@
                 <div class="shop__name">{{ $shop_detail['shop_name'] }}</div>
             </div>
             <div class="shop__img">
-                <img src="img/{{$shop_detail['id']}}.jpg" alt="shop_img" />
+                <img src="{{ asset('storage/shop_images/' . $shop_detail['id'] . '.jpg') }}" alt="shop_img" />
             </div>
             <div class="tag">
                 <p class="tag_area">#{{ $shop_detail->area->area }}</p>

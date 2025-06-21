@@ -10,6 +10,8 @@ class Shop extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['shop_name', 'area_id', 'genre_id', 'feature', 'opening_time', 'closing_time', 'user_id', 'image'];
+
     public function area()
     {
         return $this->belongsTo(Area::class);
@@ -46,6 +48,7 @@ class Shop extends Model
         if (!empty($shop_id)) {
             $query->where('id', $shop_id);
         }
+        return $query;
     }
 
     public function reservations()

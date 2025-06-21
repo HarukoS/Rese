@@ -9,24 +9,31 @@
     <form class="search-form" action="/search" method="get">
         @csrf
         <select class="search-form__area" name="area_id">
-            <option disabled selected>All area</option>
-            <option value="">すべて</option>
+            <option disabled {{ old('area_id', request('area_id')) === null ? 'selected' : '' }}>All area</option>
+            <option value="" {{ old('area_id', request('area_id')) === '' ? 'selected' : '' }}>すべて</option>
             @foreach ($areas as $area)
-            <option value="{{ $area['id'] }}">{{ $area['area'] }}</option>
+            <option value="{{ $area['id'] }}" {{ old('area_id', request('area_id')) == $area['id'] ? 'selected' : '' }}>
+            {{ $area['area'] }}
+            </option>
             @endforeach
         </select>
         <select class="search-form__genre" name="genre_id">
-            <option disabled selected>All genre</option>
-            <option value="">すべて</option>
+            <option disabled {{ old('genre_id', request('genre_id')) === null ? 'selected' : '' }}>All genre</option>
+            <option value="" {{ old('genre_id', request('genre_id')) === '' ? 'selected' : '' }}>すべて</option>
             @foreach ($genres as $genre)
-            <option value="{{ $genre['id'] }}">{{ $genre['genre'] }}</option>
+            <option value="{{ $genre['id'] }}" {{ old('genre_id', request('genre_id')) == $genre['id'] ? 'selected' : '' }}>{{ $genre['genre'] }}</option>
             @endforeach
         </select>
         <div class="search-form__button">
-            <button class="search-form__button-submit" type="submit"><img src="{{ asset('img/search.jpeg') }}" alt="search"></img></button>
+            <button class="search-form__button-submit" type="submit">
+                <div class="search-form__button-img">
+                    <img src="{{ asset('img/search.jpeg') }}" alt="search" style="width: 18px; height: 18px;">
+                    <div class="message">検索</div>
+                </div>
+            </button>
         </div>
         <div class="search-form__item">
-            <input class="search-form__text" type="text" name="keyword" value="{{ old('keyword') }}" placeholder="Search ...">
+            <input class="search-form__text" type="text" name="keyword" value="{{ old('keyword', request('keyword')) }}" placeholder="Search ...">
         </div>
     </form>
 </div>
@@ -37,7 +44,7 @@
     @foreach ($shops as $shop)
     <div class="shop__card">
         <div class="card__img">
-            <img src="img/{{$shop['id']}}.jpg" alt="shop_image" />
+            <img src="{{ asset('storage/shop_images/' . $shop['id'] . '.jpg') }}" alt="shop_image" />
         </div>
         <div class="card__content">
             <div class="card__title">
@@ -88,4 +95,5 @@
     </div>
     @endforeach
 </div>
+
 @endsection

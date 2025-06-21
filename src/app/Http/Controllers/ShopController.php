@@ -18,6 +18,7 @@ class ShopController extends Controller
             $areas = Area::all();
             $genres = Genre::all();
             $user_id = Auth::user()->id;
+            $user_role = Auth::user()->role;
             $likes = Like::where('user_id', $user_id)->get();
             $shops = Shop::with('reviews')->get()->map(function ($shop) {
                 $reviews = $shop->reviews;
@@ -26,7 +27,7 @@ class ShopController extends Controller
                 $shop->setAttribute('average_rate', $roundedAverageRate);
                 return $shop;
             });
-            return view('index', compact('shops', 'areas', 'genres', 'user_id', 'likes'));
+            return view('index', compact('shops', 'areas', 'genres', 'user_id', 'user_role', 'likes'));
         } else {
 
             $areas = Area::all();
@@ -81,7 +82,18 @@ class ShopController extends Controller
         $request_shops = $request->all();
         $shop_details = Shop::with(['area', 'genre'])->ShopSearch($request->shop_id)->get();
         $shop_reviews = Shop::with('reviews')->find($request->shop_id);
-        return view('detail', compact('request_shops', 'shop_details', 'shop_reviews'));
+
+        $data = [
+            'request_shops' => $request_shops,
+            'shop_details' => $shop_details,
+            'shop_reviews' => $shop_reviews,
+        ];
+
+        if (Auth::check() && Auth::user()->role !== null) {
+        $data['user_role'] = Auth::user()->role;
+        }
+
+        return view('detail', $data);
     }
 
     public function like(Request $request)
