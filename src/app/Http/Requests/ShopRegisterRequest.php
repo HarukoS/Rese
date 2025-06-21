@@ -11,7 +11,7 @@ class ShopRegisterRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class ShopRegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'shop_name' => 'required|max:100',
+            'area_id' => 'required',
+            'genre_id' => 'required',
+            'feature' => 'required|max:200',
+            'image' => 'required',
         ];
     }
 }
