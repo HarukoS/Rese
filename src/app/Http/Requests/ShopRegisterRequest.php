@@ -26,7 +26,6 @@ class ShopRegisterRequest extends FormRequest
             'area_id' => 'required',
             'genre_id' => 'required',
             'feature' => 'required|max:200',
-            'image' => 'required',
         ];
     }
 }

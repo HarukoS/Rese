@@ -10,13 +10,13 @@
 }
 
 .myshop_registration {
-    width: 50%;
+    width: 700px;
     padding-top: 60px;
 }
 
 .registration__info {
     background-color: #3366FF;
-    width: 90%;
+    width: 550px;
     padding: 30px 25px;
     margin-bottom: 25px;
     border-radius: 5px;
@@ -34,6 +34,7 @@
 
 .registration-form__group {
     background-color: #3366FF;
+
 }
 
 .form__group-title {
@@ -44,10 +45,6 @@ span,
 label {
     background-color: #3366FF;
     color: white;
-}
-
-.form__input-text {
-    /* width: 200px; */
 }
 
 .search-form {
@@ -135,80 +132,34 @@ select {
     background-color: white;
 }
 
-.myshop_list {
-    width: 50%;
+.myshop_reservation {
+    width: 700px;
     margin-bottom: 50px;
+    margin-left: 50px;
 }
 
-.flex__item {
+table {
     width: 90%;
-    display: grid;
-    grid-template-columns: 330px 330px;
-    gap: 65px;
-}
-
-.shop__card {
-    border-radius: 2%;
-    box-shadow: 2px 2px 3px grey;
-}
-
-.card__img img {
-    width: 100%;
-    aspect-ratio: 2 / 1.1;
-    object-fit: cover;
-    border-top-left-radius: 2%;
-    border-top-right-radius: 2%;
-}
-
-.card__content {
-    padding: 20px 17px;
-    background-color: white;
-    border-bottom-left-radius: 2%;
-    border-bottom-right-radius: 2%;
-}
-
-.card__name {
-    margin-bottom: 5px;
-    display: inline-block;
-    font-size: 18px;
-    font-weight: bold;
-    background-color: white;
-}
-
-.card__tag {
-    font-size: 12px;
-    margin-bottom: 15px;
-    background-color: white;
-}
-
-.card__detail {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    background-color: white;
+    margin: auto;
 }
 
-.card__detail-btn {
-    background-color: white;
+.table_inner {
+    width: 100%;
 }
 
-.card__detail-btn-submit {
-    padding: 0 auto;
-    width: 100px;
-    height: 30px;
-    border: none;
-    font-size: 15px;
-    color: white;
-    background-color: #3366FF;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+table td,
+table th {
+    width: 700px;
+    height: 60px;
+    text-align: left;
+    vertical-align: middle;
+    border-top: 1px solid black;
 }
 
-.card__detail-btn-submit:hover {
-    background-color: blue;
+.table_header {
+    text-align: left;
 }
-
-
-
-
 

@@ -17,8 +17,4 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-docker/mysql/data/*
-docker/mysql/data/#innodb_temp/
-docker/mysql/data/#innodb_temp/*
-docker/mysql/data/ibtmp1
-docker/mysql/data/binlog.index
+mysql/data/

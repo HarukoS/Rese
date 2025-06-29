@@ -12,7 +12,7 @@
 }
 
 .navbar {
-    width: 50%;
+    width: 700px;
     height: 100px;
     background: #EEEEEE;
     display: flex;
@@ -24,6 +24,36 @@
     position: relative;
 }
 
+@media screen and (max-width: 480px) {
+.navbar {
+    width: 300px;
+    height: 60px;
+    background: #EEEEEE;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    padding-left: 0;
+    position: relative;
+}
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        width: 300px;
+        height: 100px;
+        background: #EEEEEE;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem;
+        padding-left: 0;
+        position: relative;
+    }
+}
+
 .logo {
     margin-left: 60px;
     font-size: 30px;
@@ -31,6 +61,17 @@
     color: #3366FF;
     line-height: 80px;
     text-align: left;
+}
+
+@media screen and (max-width: 480px) {
+.logo {
+    margin-left: 60px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #3366FF;
+    /* line-height: 80px; */
+    /* text-align: left; */
+}
 }
 
 .span-container,
@@ -152,8 +193,17 @@ form {
 }
 
 .search-bar {
-    width: 50%;
+    width: 700px;
     display: block;
     height: 100px;
     padding: 1.5rem;
+}
+
+@media screen and (max-width: 480px) {
+.search-bar {
+    width: 380px;
+    /* display: block; */
+    height: 80px;
+    padding: 15PX;
+}
 }

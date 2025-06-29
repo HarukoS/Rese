@@ -10,13 +10,19 @@
 }
 
 .reservations {
-    width: 45%;
+    width: 500px;
     padding-top: 60px;
+    margin-right: 50px;
+}
+
+.my_favorite {
+    width: 700px;
+    margin-bottom: 50px;
 }
 
 .reservation-info {
     background-color: #3366FF;
-    width: 80%;
+    width: 450px;
     padding: 30px 25px;
     margin-bottom: 25px;
     border-radius: 5px;
@@ -84,7 +90,7 @@
 
 .after_reservation-info {
     background-color: #3366FF;
-    width: 80%;
+    width: 450px;
     padding: 30px 25px;
     margin-bottom: 25px;
     border-radius: 5px;
@@ -141,6 +147,7 @@
     padding: 0 auto;
     color: grey;
 }
+
 .open-review__button {
     cursor: pointer;
     text-decoration: none;
@@ -151,11 +158,6 @@
 
 .open-review__button:hover {
     font-weight: bold;
-}
-
-.my_favorite {
-    width: 55%;
-    margin-bottom: 50px;
 }
 
 .flex__item {

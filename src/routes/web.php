@@ -90,4 +90,6 @@ Route::get('/myshop', [ShopOwnerController::class, 'myshop']);
 
 Route::post('/shopregister', [ShopOwnerController::class, 'shopRegister']);
 
-Route::get('/myshop/search', [ShopOwnerController::class, 'shopSearch']);
+Route::get('/myshop/search', [ShopOwnerController::class, 'shopSearch'])->name('myshop.search');
+
+Route::post('/shopupdate', [ShopOwnerController::class, 'shopUpdate']);
