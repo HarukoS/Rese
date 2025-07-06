@@ -10,22 +10,21 @@ use Carbon\Carbon;
 
 class SendReservationReminders extends Command
 {
-    protected $signature = 'reminders:send-reservation';
-    protected $description = 'Send reservation reminder emails at 7AM';
+    protected $signature = 'reminders:send';
+    protected $description = '予約日の当日朝にリマインドメールを送信';
 
     public function handle()
     {
-        $today = Carbon::today()->toDateString();
+        $today = now()->format('Y-m-d');
 
-        $reservations = Reservation::with(['user', 'shop'])
-        ->whereDate('date', $today)
-        ->get();
+        $reservations = Reservation::whereDate('date', $today)->get();
 
         foreach ($reservations as $reservation) {
-            Mail::to($reservation->user->email)
-                ->send(new ReservationReminderMail($reservation));
+            Mail::to($reservation->reservedBy->email)->queue(
+                new ReservationReminderMail($reservation)
+            );
         }
 
-        $this->info('Reservation reminders sent.');
+        $this->info('Remind emails sent for ' . $reservations->count() . ' reservations.');
     }
 }

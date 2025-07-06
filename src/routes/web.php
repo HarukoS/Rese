@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShopOwnerController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\PaymentController;
 
 Route::get('/', [ShopController::class, 'index']);
 
@@ -45,10 +46,14 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
     Route::post('/sendmail', [UserController::class, 'sendEmail'])->name('send.email');
 });
 
-//予約
-Route::middleware('auth', 'verified')->group(function () {
+// 予約作成
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/reservation', [ReservationController::class, 'store']);
 });
+
+// 店舗側がQRコードから予約確認
+Route::get('/reservation/{id}', [ReservationController::class, 'show'])
+    ->name('reservation.show');
 
 //myPageから予約の削除
 Route::middleware('auth', 'verified')->group(function () {
@@ -93,3 +98,12 @@ Route::post('/shopregister', [ShopOwnerController::class, 'shopRegister']);
 Route::get('/myshop/search', [ShopOwnerController::class, 'shopSearch'])->name('myshop.search');
 
 Route::post('/shopupdate', [ShopOwnerController::class, 'shopUpdate']);
+
+Route::prefix('payment')->name('payment.')->group(function () {
+    Route::get('/create', [PaymentController::class, 'create'])->name('create');
+    Route::post('/intent', [PaymentController::class, 'createIntent'])->name('intent');
+});
+
+Route::get('/check-time', function () {
+    return now()->toDateTimeString();
+});

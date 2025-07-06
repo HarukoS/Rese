@@ -37,6 +37,9 @@
                         <td class="reservation-table__text">{{ $reservation['number'] }}人</td>
                     </tr>
                 </table>
+                <div class="payment__button">
+                    <a href="/payment/create" class="open-payment__button">事前支払い</a>
+                </div>
                 <div class="update__button">
                     <input type="radio" id="modal2Toggle" name="modalToggle" class="modal-toggle">
                     <a href="#modal2&{{$reservation->id}}" class="open-update__button">予約変更</a>
@@ -96,7 +99,9 @@
                             <div class="modal-form__group">
                                 <label class="modal-form__label" for="">Time</label>
                                 <select class="select__time" id="selectTime" name="time">
-                                    <option value="{{ $reservation['time'] }}" selected>{{ \Carbon\Carbon::parse($reservation['time'])->format('H:i') }}</option>
+                                    <option value="{{ \Carbon\Carbon::parse($reservation->time)->format('H:i') }}"
+                                    {{ old('time', \Carbon\Carbon::parse($reservation->time)->format('H:i')) == \Carbon\Carbon::parse($reservation->time)->format('H:i') ? 'selected' : '' }}>{{ \Carbon\Carbon::parse($reservation->time)->format('H:i') }}
+                                    </option>
                                     <option value="00:00">00:00</option>
                                     <option value="00:30">00:30</option>
                                     <option value="01:00">01:00</option>

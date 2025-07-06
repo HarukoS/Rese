@@ -184,11 +184,12 @@
                 </ul>
                 @endif
 
-                @if (session('success'))
-                <div class="alert-success">
-                {{ session('success') }}
+                @if (isset($success))
+                <div class="alert alert-success">
+                {{ $success }}
                 </div>
                 @endif
+
             </div>
         </div>
     </div>

@@ -10,6 +10,7 @@ use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -19,6 +20,7 @@ class ShopOwnerController extends Controller
 {
     public function myshop(Request $request)
     {
+        $now = Carbon::now();
         $user_id = Auth::user()->id;
         $shops = Shop::where('user_id', $user_id)->get();
         $areas = Area::all();
@@ -26,13 +28,14 @@ class ShopOwnerController extends Controller
         $user = Auth::user();
         $reservations = Reservation::whereHas('shop', function ($query) use ($user_id) {
             $query->where('user_id', $user_id);
-            })->get();
+            })->whereRaw('CONCAT(date, " ", time) >= ?', [$now])->get();
 
         return view('myshop', compact('shops', 'areas', 'genres', 'user', 'reservations'));
     }
 
     public function shopRegister(ShopRegisterRequest $request)
     {
+        $now = Carbon::now();
         $user_id = Auth::id();
 
         $shop = Shop::create([
@@ -60,7 +63,7 @@ class ShopOwnerController extends Controller
 
         $reservations = Reservation::whereHas('shop', function ($query) use ($user_id) {
             $query->where('user_id', $user_id);
-        })->get();
+        })->whereRaw('CONCAT(date, " ", time) >= ?', [$now])->get();
 
         $shops = Shop::where('user_id', $user_id)->get();
         $areas = Area::all();
@@ -73,6 +76,7 @@ class ShopOwnerController extends Controller
 
     public function shopSearch(Request $request)
     {
+        $now = Carbon::now();
         $user = Auth::user();
         $user_id = $user->id;
 
@@ -84,13 +88,14 @@ class ShopOwnerController extends Controller
         $genres = Genre::all();
         $reservations = Reservation::whereHas('shop', function ($query) use ($user_id) {
             $query->where('user_id', $user_id);
-            })->get();
+            })->whereRaw('CONCAT(date, " ", time) >= ?', [$now])->get();
 
         return view('myshop', compact('shop', 'shops', 'areas', 'genres', 'user', 'reservations'));
     }
 
     public function shopUpdate(ShopRegisterRequest $request)
     {
+        $now = Carbon::now();
         $shopupdate = Shop::find($request->shop_id);
 
         $shopupdate->fill($request->only(['shop_name', 'area_id', 'genre_id', 'feature']));
@@ -112,7 +117,7 @@ class ShopOwnerController extends Controller
 
         $reservations = Reservation::whereHas('shop', function ($query) use ($user_id) {
             $query->where('user_id', $user_id);
-        })->get();
+        })->whereRaw('CONCAT(date, " ", time) >= ?', [$now])->get();
 
         return view('myshop', [
             'shop' => $shopupdate,
@@ -121,6 +126,6 @@ class ShopOwnerController extends Controller
             'genres' => $genres,
             'user' => $user,
             'reservations' => $reservations,
-        ]);
+        ])->with('success', '店舗更新が完了しました');
     }
 }

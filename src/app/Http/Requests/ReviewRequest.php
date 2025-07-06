@@ -23,6 +23,8 @@ class ReviewRequest extends FormRequest
     {
         return [
             'rate' => 'required',
+            'handle' => 'nullable|string|max:100',
+            'comment' => 'nullable|string',
         ];
     }
 }

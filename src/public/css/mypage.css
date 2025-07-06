@@ -62,6 +62,27 @@
     padding-left: 45px;
     padding-bottom: 10px;
 }
+.payment__button {
+    margin-left: 70%;
+    margin-bottom: 10px;
+    width: 120px;
+    height: 28px;
+    text-align: center;
+    border-radius: 3px;
+    background-color: white;
+}
+
+.open-payment__button {
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 15px;
+    padding: 0 auto;
+    color: black;
+}
+
+.open-payment__button:hover {
+    font-weight: bold;
+}
 
 .update__button {
     margin-left: 70%;

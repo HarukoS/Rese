@@ -163,3 +163,7 @@ table th {
     text-align: left;
 }
 
+.alert.alert-success {
+    color: red;
+    background-color: #3366FF;
+}
