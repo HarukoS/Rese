@@ -9,15 +9,39 @@
     margin-right: 7%;
 }
 
+@media screen and (max-width: 768px) {
+    .mypage {
+        display: flex;
+        flex-direction: row;
+        margin-left: 5%;
+        margin-right: 0%;
+    }
+}
+
 .reservations {
     width: 500px;
     padding-top: 60px;
     margin-right: 50px;
 }
 
+@media screen and (max-width: 768px) {
+    .reservations {
+        width: 400px;
+        padding-top: 60px;
+        margin-right: 20px;
+    }
+}
+
 .my_favorite {
     width: 700px;
     margin-bottom: 50px;
+}
+
+@media screen and (max-width: 768px) {
+    .my_favorite {
+        width: 350px;
+        margin-bottom: 50px;
+    }
 }
 
 .reservation-info {
@@ -27,6 +51,17 @@
     margin-bottom: 25px;
     border-radius: 5px;
     box-shadow: 2px 2px 3px grey;
+}
+
+@media screen and (max-width: 768px) {
+    .reservation-info {
+        background-color: #3366FF;
+        width: 350px;
+        padding: 30px 25px;
+        margin-bottom: 25px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 3px grey;
+    }
 }
 
 .img {
@@ -62,6 +97,7 @@
     padding-left: 45px;
     padding-bottom: 10px;
 }
+
 .payment__button {
     margin-left: 70%;
     margin-bottom: 10px;
@@ -70,6 +106,19 @@
     text-align: center;
     border-radius: 3px;
     background-color: white;
+}
+
+@media screen and (max-width: 768px) {
+    .payment__button {
+        margin-left: 60%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 120px;
+        height: 28px;
+        text-align: center;
+        border-radius: 3px;
+        background-color: white;
+    }
 }
 
 .open-payment__button {
@@ -90,7 +139,18 @@
     height: 28px;
     text-align: center;
     border-radius: 3px;
-    background-color:white;
+    background-color: white;
+}
+
+@media screen and (max-width: 768px) {
+    .update__button {
+        margin-left: 60%;
+        width: 120px;
+        height: 28px;
+        text-align: center;
+        border-radius: 3px;
+        background-color:white;
+    }
 }
 
 .open-update__button {
@@ -116,6 +176,17 @@
     margin-bottom: 25px;
     border-radius: 5px;
     box-shadow: 2px 2px 3px grey;
+}
+
+@media screen and (max-width: 768px) {
+    .after_reservation-info {
+        background-color: #3366FF;
+        width: 350px;
+        padding: 30px 25px;
+        margin-bottom: 25px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 3px grey;
+    }
 }
 
 .img2 {
@@ -162,6 +233,18 @@
     background-color: white;
 }
 
+@media screen and (max-width: 768px) {
+    .review__button {
+        margin-left: 60%;
+        margin-top: 10px;
+        width: 120px;
+        height: 28px;
+        text-align: center;
+        border-radius: 3px;
+        background-color: white;
+    }
+}
+
 .after-review__button {
     text-decoration: none;
     font-size: 15px;
@@ -186,6 +269,15 @@
     display: grid;
     grid-template-columns: 350px 350px;
     gap: 65px;
+}
+
+@media screen and (max-width: 768px) {
+    .flex__item {
+        width: 90%;
+        display: grid;
+        grid-template-columns: 300px;
+        gap: 20px;
+    }
 }
 
 .shop__card {
@@ -264,7 +356,6 @@
 
 .modal-toggle {
     display: none;
-    /* ラジオボタンは非表示 */
 }
 
 .modal-toggle:checked+.open-modal-button+.modal {
@@ -304,7 +395,6 @@
 }
 
 .modal__message {
-    /* margin-top: 20px; */
     text-align: center;
     background-color: white;
     font-size: 22px;

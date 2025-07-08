@@ -195,8 +195,8 @@
                     </form>
                 </div>
             </div>
-
             @endforeach
+
         </div>
         <div class="after_reservation">
             <div class="after_reservation__heading">

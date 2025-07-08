@@ -11,6 +11,14 @@
     margin-right: 5%;
 }
 
+@media screen and (max-width: 480px) {
+    .header {
+        display: block;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+
 .navbar {
     width: 700px;
     height: 100px;
@@ -24,22 +32,22 @@
     position: relative;
 }
 
-@media screen and (max-width: 480px) {
-.navbar {
-    width: 300px;
-    height: 60px;
-    background: #EEEEEE;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    padding-left: 0;
-    position: relative;
-}
+@media screen and (max-width: 768px) {
+    .navbar {
+        width: 400px;
+        height: 100px;
+        background: #EEEEEE;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        padding-left: 0;
+        position: relative;
+    }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 480px) {
     .navbar {
         width: 300px;
         height: 100px;
@@ -48,7 +56,7 @@
         flex-flow: row nowrap;
         justify-content: space-between;
         align-items: center;
-        padding: 2rem;
+        padding: 15px;
         padding-left: 0;
         position: relative;
     }
@@ -63,15 +71,22 @@
     text-align: left;
 }
 
-@media screen and (max-width: 480px) {
-.logo {
-    margin-left: 60px;
-    font-size: 30px;
-    font-weight: bold;
-    color: #3366FF;
-    /* line-height: 80px; */
-    /* text-align: left; */
+@media screen and (max-width: 768px) {
+    .logo {
+        margin-left: 60px;
+        font-size: 30px;
+        font-weight: bold;
+        color: #3366FF;
+    }
 }
+
+@media screen and (max-width: 480px) {
+    .logo {
+        margin-left: 60px;
+        font-size: 30px;
+        font-weight: bold;
+        color: #3366FF;
+    }
 }
 
 .span-container,
@@ -200,10 +215,10 @@ form {
 }
 
 @media screen and (max-width: 480px) {
-.search-bar {
-    width: 380px;
-    /* display: block; */
-    height: 80px;
-    padding: 15PX;
-}
+    .search-bar {
+        width: 100%;
+        /* display: block; */
+        /* height: 100px; */
+        padding: 0PX;
+    }
 }

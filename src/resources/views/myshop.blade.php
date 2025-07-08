@@ -251,10 +251,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // 初期実行
     toggleForm();
 
-    // イベントバインド
     radioNew.addEventListener('change', toggleForm);
     radioUpdate.addEventListener('change', toggleForm);
 });

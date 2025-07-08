@@ -10,11 +10,17 @@ h2 {
     display: flex;
     flex-direction: row;
     margin-left: 10%;
-    /* margin-right: 10%; */
+    margin-right: 10%;
+}
+
+@media screen and (max-width: 768px) {
+    .admin {
+        display: block;
+        margin-right: 10%;
+    }
 }
 
 .register-form__content {
-    /* margin-left: 10%; */
     padding-bottom: 20px;
     padding-top: 20px;
     max-width: 500px;
@@ -51,18 +57,25 @@ h2 {
 }
 
 .form__group-text {
-    display: flex;
-    justify-content: space-between;
-    height: 25px;
+    height: 40px;
     width: 100%;
     background-color: white;
     border-bottom: 1px solid black;
 }
 
+@media screen and (max-width: 768px) {
+    .form__group-text {
+        display: block;
+        height: 30px;
+        width: 100%;
+        background-color: white;
+        border-bottom: 1px solid black;
+    }
+}
+
 .form__group-title {
     margin-right: 10px;
     text-align: left;
-    /* color: black; */
     background-color: white;
 }
 
@@ -85,6 +98,7 @@ h2 {
 
 .form__input-text {
     background-color: white;
+    border-bottom: 1px solid black;
 }
 
 .form__input-text input {
@@ -115,6 +129,12 @@ h2 {
 
 .list {
     margin-left: 12%;
+}
+
+@media screen and (max-width: 768px) {
+    .list {
+        margin-left: 0%;
+    }
 }
 
 .owner-table td,

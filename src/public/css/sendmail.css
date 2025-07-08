@@ -8,6 +8,13 @@
     max-width: 1230px;
 }
 
+@media screen and (max-width: 768px) {
+    .send-form__content {
+        margin: 0 auto;
+        padding: 0px 0px;
+    }
+}
+
 .send-form__heading {
     margin-bottom: 40px;
     text-align: center;
@@ -17,6 +24,14 @@
     margin: 0 auto;
     width: 60%;
     background-color: #EEEEEE;
+}
+
+@media screen and (max-width: 768px) {
+    .form {
+        margin: 0 auto;
+        width: 90%;
+        background-color: #EEEEEE;
+    }
 }
 
 .form__group {
@@ -35,6 +50,13 @@
 label {
     margin-left: 5px;
     padding: 4px 6px;
+}
+
+@media screen and (max-width: 768px) {
+    label {
+        margin-left: 0px;
+        padding: 0px 0px;
+    }
 }
 
 input,

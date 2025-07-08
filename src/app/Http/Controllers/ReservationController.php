@@ -17,7 +17,6 @@ class ReservationController extends Controller
 {
     public function store(ReservationRequest $request)
     {
-        // 1. 予約を保存
         $reservation = new Reservation;
         $reservation->user_id = Auth::user()->id;
         $reservation->shop_id = $request->shop_id;
@@ -26,7 +25,6 @@ class ReservationController extends Controller
         $reservation->number = $request->number;
         $reservation->save();
 
-        // 2. QRコード生成（例: 予約ID を含む URL にする）
         $qrData = route('reservation.show', ['id' => $reservation->id]);
 
         $result = Builder::create()
@@ -35,16 +33,13 @@ class ReservationController extends Controller
             ->margin(10)
             ->build();
 
-        // 3. ストレージに保存
         $filename = 'qrcode_' . $reservation->id . '.png';
         Storage::disk('public')->put('qrcodes/' . $filename, $result->getString());
         $qrCodeUrl = Storage::disk('public')->url('qrcodes/' . $filename);
 
-        // 4. メール送信
         $user = Auth::user();
         Mail::to($user->email)->send(new ReservationConfirmed($user, $qrCodeUrl));
 
-        // 5. 役割をビューに渡す
         $user_role = $user->role;
 
         return view('/done', compact('user_role'));
@@ -63,7 +58,6 @@ class ReservationController extends Controller
         $reservation->fill($request->only(['date', 'time', 'number']));
         $reservation->save();
 
-        // QRコード作成し直し
         $qrData = route('reservation.show', ['id' => $reservation->id]);
 
         $result = Builder::create()
@@ -76,11 +70,9 @@ class ReservationController extends Controller
         Storage::disk('public')->put('qrcodes/' . $filename, $result->getString());
         $qrCodeUrl = Storage::disk('public')->url('qrcodes/' . $filename);
 
-        // 4. メール送信
         $user = Auth::user();
         Mail::to($user->email)->send(new ReservationConfirmed($user, $qrCodeUrl));
 
-        // 5. 役割をビューに渡す
         $user_role = $user->role;
 
         return view('/done', compact('user_role'));

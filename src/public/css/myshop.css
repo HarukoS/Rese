@@ -9,6 +9,15 @@
     margin-right: 7%;
 }
 
+@media screen and (max-width: 768px) {
+    .myshop {
+        width: 90%;
+        display: block;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+
 .myshop_registration {
     width: 700px;
     padding-top: 60px;
@@ -21,6 +30,24 @@
     margin-bottom: 25px;
     border-radius: 5px;
     box-shadow: 2px 2px 3px grey;
+}
+
+@media screen and (max-width: 768px) {
+    .myshop_registration {
+        width: 100%;
+        padding-top: 60px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .registration__info {
+        background-color: #3366FF;
+        width: 100%;
+        padding: 30px 25px;
+        margin-bottom: 25px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 3px grey;
+    }
 }
 
 .registration__inner {
@@ -64,8 +91,6 @@ label {
     width: 80px;
     height: 20px;
     border: none;
-    /* font-size: 15px; */
-    /* color: white; */
     background-color: white;
     border: none;
     border-radius: 5px;
@@ -84,7 +109,6 @@ label {
 }
 
 textarea {
-    /* width: 140%; */
     height: 200px;
     background-color: white;
 }
@@ -136,6 +160,14 @@ select {
     width: 700px;
     margin-bottom: 50px;
     margin-left: 50px;
+}
+
+@media screen and (max-width: 768px) {
+    .myshop_reservation {
+        width: 100%;
+        margin-bottom: 0px;
+        margin-left: 0px;
+    }
 }
 
 table {

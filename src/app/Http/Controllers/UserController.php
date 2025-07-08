@@ -52,7 +52,6 @@ class UserController extends Controller
 
     public function shopOwner(Request $request)
     {
-        // リクエストデータをバリデーション
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -60,7 +59,6 @@ class UserController extends Controller
             'role' => 'required',
         ]);
 
-        // 店舗代表者を作成（パスワードはハッシュ化）
         $user = User::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
@@ -68,7 +66,6 @@ class UserController extends Controller
             'role' => $validatedData['role'],
         ]);
 
-        // 新しく作成した店舗代表者に認証メールを送る
         event(new Registered($user));
 
         return redirect('/admin');
@@ -87,10 +84,8 @@ class UserController extends Controller
         return view('sendmail', compact('user_role'));
     }
 
-    //管理者から全ユーザーへメール送付
     public function sendEmail(Request $request)
     {
-        // 管理者から送られる件名と本文を受け取る
         $request->validate([
             'subject' => 'required|string|max:255',
             'message_content' => 'required|string',
@@ -101,10 +96,8 @@ class UserController extends Controller
         $messageContent = $request->input('message_content');
         $attachment = $request->file('attachment');
 
-        // 全ユーザーを取得
         $users = User::all();
 
-        // 各ユーザーにメールを送信
         foreach ($users as $user) {
             Mail::to($user->email)->send(new SendMail($subject, $messageContent, $attachment));
         }

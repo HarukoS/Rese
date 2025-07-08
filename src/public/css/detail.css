@@ -12,10 +12,25 @@
     width: 50%;
 }
 
+@media screen and (max-width: 480px) {
+    .shop__detail {
+        width: 50%;
+        margin-top: -100px;
+    }
+}
+
 .shop__detail-title {
     display: flex;
     margin-top: 50px;
     margin-bottom: 20px;
+}
+
+@media screen and (max-width: 480px) {
+    .shop__detail-title {
+        display: flex;
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
 }
 
 .back__button {
@@ -47,6 +62,24 @@
     width: 100%;
     height: 480px;
     object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+    .shop__img img{
+        width: 100%;
+        height: 240px;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .shop__img img {
+        width: 100%;
+        height: 120px;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+    }
 }
 
 .tag {
@@ -127,7 +160,7 @@ p {
 }
 
 .shop__reservation {
-    margin-top: -50px;
+    margin-top: 0px;
     padding: 20px 50px 20px 25px;
     width: 50%;
     margin-left: 5%;
@@ -136,6 +169,34 @@ p {
     position: relative;
     border-radius: 5px;
     box-shadow: 2px 2px 3px grey;
+}
+
+@media screen and (max-width: 768px) {
+    .shop__reservation {
+        margin-top: 0px;
+        padding: 20px 20px 20px 20px;
+        width: 50%;
+        margin-left: 5%;
+        height: 600px;
+        background-color: #3366FF;
+        position: relative;
+        border-radius: 5px;
+        box-shadow: 2px 2px 3px grey;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .shop__reservation {
+        margin-top: -100px;
+        padding: 20px 20px 20px 15px;
+        width: 50%;
+        margin-left: 5%;
+        height: 500px;
+        background-color: #3366FF;
+        position: relative;
+        border-radius: 5px;
+        box-shadow: 2px 2px 3px grey;
+    }
 }
 
 h2 {
@@ -189,6 +250,28 @@ h2 {
     border-radius: 5px;
 }
 
+@media screen and (max-width: 768px) {
+    .confirm-table {
+        background-color: #5D99FF;
+        width: 95%;
+        padding-top: 20px;
+        padding-left: 15px;
+        padding-bottom: 20px;
+        border-radius: 5px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .confirm-table {
+        background-color: #5D99FF;
+        width: 95%;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-bottom: 10px;
+        border-radius: 5px;
+    }
+}
+
 .confirm-table__inner {
     color: white;
 }
@@ -197,6 +280,24 @@ th {
     background-color: #5D99FF;
     text-align: left;
     padding-bottom: 8px;
+}
+
+@media screen and (max-width: 768px) {
+    th {
+        background-color: #5D99FF;
+        text-align: left;
+        padding-bottom: 8px;
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    th {
+        background-color: #5D99FF;
+        text-align: left;
+        padding-bottom: 8px;
+        font-size: 12px;
+    }
 }
 
 td {
@@ -208,6 +309,24 @@ td {
     background-color: #5D99FF;
     color: white;
     padding-left: 45px;
+}
+
+@media screen and (max-width: 768px) {
+    .confirm-table__text {
+        background-color: #5D99FF;
+        color: white;
+        padding-left: 45px;
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .confirm-table__text {
+        background-color: #5D99FF;
+        color: white;
+        padding-left: 10px;
+        font-size: 12px;
+    }
 }
 
 span {

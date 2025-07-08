@@ -32,11 +32,17 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('/mypage', [UserController::class, 'mypage']);
 });
 
-Route::post('/owner', [UserController::class, 'shopOwner']);
+Route::middleware('auth', 'verified')->group(function () {
+    Route::post('/owner', [UserController::class, 'shopOwner']);
+});
 
-Route::delete('/owner/delete', [UserController::class, 'deleteOwner']);
+Route::middleware('auth', 'verified')->group(function () {
+    Route::delete('/owner/delete', [UserController::class, 'deleteOwner']);
+});
 
-Route::get('/admin', [UserController::class, 'admin']);
+Route::middleware('auth', 'verified')->group(function () {
+    Route::get('/admin', [UserController::class, 'admin']);
+});
 
 Route::middleware(['auth', 'can:admin'])->group(function () {
     Route::get('/sendmail', [UserController::class, 'editEmail']);
@@ -74,7 +80,9 @@ Route::get('/done', function () {
     return view('done');
 });
 
-Route::get('/thanks', [AuthController::class, 'thanks']);
+Route::middleware('auth', 'verified')->group(function () {
+    Route::get('/thanks', [AuthController::class, 'thanks']);
+});
 
 //メール認証
 Route::get('/email/verify', function () {
@@ -91,13 +99,21 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-Route::get('/myshop', [ShopOwnerController::class, 'myshop']);
+Route::middleware('auth', 'verified')->group(function () {
+    Route::get('/myshop', [ShopOwnerController::class, 'myshop']);
+});
 
-Route::post('/shopregister', [ShopOwnerController::class, 'shopRegister']);
+Route::middleware('auth', 'verified')->group(function () {
+    Route::post('/shopregister', [ShopOwnerController::class, 'shopRegister']);
+});
 
-Route::get('/myshop/search', [ShopOwnerController::class, 'shopSearch'])->name('myshop.search');
+Route::middleware('auth', 'verified')->group(function () {
+    Route::get('/myshop/search', [ShopOwnerController::class, 'shopSearch'])->name('myshop.search');
+});
 
-Route::post('/shopupdate', [ShopOwnerController::class, 'shopUpdate']);
+Route::middleware('auth', 'verified')->group(function () {
+    Route::post('/shopupdate', [ShopOwnerController::class, 'shopUpdate']);
+});
 
 Route::prefix('payment')->name('payment.')->group(function () {
     Route::get('/create', [PaymentController::class, 'create'])->name('create');
