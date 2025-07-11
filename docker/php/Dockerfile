@@ -22,3 +22,5 @@ RUN curl -sS https://getcomposer.org/installer | php \
   && composer self-update
 
 WORKDIR /var/www
+
+CMD ["php-fpm"]
