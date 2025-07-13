@@ -12,11 +12,21 @@ use Endroid\QrCode\Builder\Builder;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use App\Mail\ReservationConfirmed;
+use Carbon\Carbon;
 
 class ReservationController extends Controller
 {
     public function store(ReservationRequest $request)
     {
+        $reservationDateTime = Carbon::parse($request->date . ' ' . $request->time);
+        $now = Carbon::now();
+
+        if ($reservationDateTime->lessThan($now)) {
+            return back()
+                ->withErrors(['date' => '予約日時は現在日時より後を選択してください。'])
+                ->withInput();
+        }
+
         $reservation = new Reservation;
         $reservation->user_id = Auth::user()->id;
         $reservation->shop_id = $request->shop_id;
@@ -54,6 +64,15 @@ class ReservationController extends Controller
 
     public function updateReservation(ReservationRequest $request)
     {
+        $reservationDateTime = Carbon::parse($request->date . ' ' . $request->time);
+        $now = Carbon::now();
+
+        if ($reservationDateTime->lessThan($now)) {
+            return back()
+                ->withErrors(['date' => '予約日時は現在日時より後を選択してください。'])
+                ->withInput();
+        }
+
         $reservation = Reservation::find($request->id);
         $reservation->fill($request->only(['date', 'time', 'number']));
         $reservation->save();

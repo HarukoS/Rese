@@ -87,7 +87,7 @@ class ShopsTableSeeder extends Seeder
             'opening_time' => '00:00',
             'closing_time' => '23:59',
             'image' => 'shop_images/7.jpg',
-            'user_id' => '3',
+            'user_id' => '2',
         ];
         DB::table('shops')->insert($param);
         $param = [
@@ -98,7 +98,7 @@ class ShopsTableSeeder extends Seeder
             'opening_time' => '00:00',
             'closing_time' => '23:59',
             'image' => 'shop_images/8.jpg',
-            'user_id' => '3',
+            'user_id' => '2',
         ];
         DB::table('shops')->insert($param);
         $param = [
@@ -109,7 +109,7 @@ class ShopsTableSeeder extends Seeder
             'opening_time' => '00:00',
             'closing_time' => '23:59',
             'image' => 'shop_images/9.jpg',
-            'user_id' => '3',
+            'user_id' => '2',
         ];
         DB::table('shops')->insert($param);
         $param = [
@@ -120,7 +120,7 @@ class ShopsTableSeeder extends Seeder
             'opening_time' => '00:00',
             'closing_time' => '23:59',
             'image' => 'shop_images/10.jpg',
-            'user_id' => '3',
+            'user_id' => '2',
         ];
         DB::table('shops')->insert($param);
         $param = [
@@ -131,7 +131,7 @@ class ShopsTableSeeder extends Seeder
             'opening_time' => '00:00',
             'closing_time' => '23:59',
             'image' => 'shop_images/11.jpg',
-            'user_id' => '3',
+            'user_id' => '2',
         ];
         DB::table('shops')->insert($param);
         $param = [
@@ -142,7 +142,7 @@ class ShopsTableSeeder extends Seeder
             'opening_time' => '00:00',
             'closing_time' => '23:59',
             'image' => 'shop_images/12.jpg',
-            'user_id' => '3',
+            'user_id' => '2',
         ];
         DB::table('shops')->insert($param);
         $param = [
@@ -153,7 +153,7 @@ class ShopsTableSeeder extends Seeder
             'opening_time' => '00:00',
             'closing_time' => '23:59',
             'image' => 'shop_images/13.jpg',
-            'user_id' => '3',
+            'user_id' => '2',
         ];
         DB::table('shops')->insert($param);
         $param = [
@@ -164,7 +164,7 @@ class ShopsTableSeeder extends Seeder
             'opening_time' => '00:00',
             'closing_time' => '23:59',
             'image' => 'shop_images/14.jpg',
-            'user_id' => '3',
+            'user_id' => '2',
         ];
         DB::table('shops')->insert($param);
         $param = [
@@ -175,7 +175,7 @@ class ShopsTableSeeder extends Seeder
             'opening_time' => '00:00',
             'closing_time' => '23:59',
             'image' => 'shop_images/15.jpg',
-            'user_id' => '3',
+            'user_id' => '2',
         ];
         DB::table('shops')->insert($param);
         $param = [
@@ -186,7 +186,7 @@ class ShopsTableSeeder extends Seeder
             'opening_time' => '00:00',
             'closing_time' => '23:59',
             'image' => 'shop_images/16.jpg',
-            'user_id' => '3',
+            'user_id' => '2',
         ];
         DB::table('shops')->insert($param);
         $param = [
@@ -197,7 +197,7 @@ class ShopsTableSeeder extends Seeder
             'opening_time' => '00:00',
             'closing_time' => '23:59',
             'image' => 'shop_images/17.jpg',
-            'user_id' => '4',
+            'user_id' => '2',
         ];
         DB::table('shops')->insert($param);
         $param = [
@@ -208,7 +208,7 @@ class ShopsTableSeeder extends Seeder
             'opening_time' => '00:00',
             'closing_time' => '23:59',
             'image' => 'shop_images/18.jpg',
-            'user_id' => '4',
+            'user_id' => '2',
         ];
         DB::table('shops')->insert($param);
         $param = [
@@ -219,7 +219,7 @@ class ShopsTableSeeder extends Seeder
             'opening_time' => '00:00',
             'closing_time' => '23:59',
             'image' => 'shop_images/19.jpg',
-            'user_id' => '4',
+            'user_id' => '2',
         ];
         DB::table('shops')->insert($param);
         $param = [
@@ -230,7 +230,7 @@ class ShopsTableSeeder extends Seeder
             'opening_time' => '00:00',
             'closing_time' => '23:59',
             'image' => 'shop_images/20.jpg',
-            'user_id' => '4',
+            'user_id' => '2',
         ];
         DB::table('shops')->insert($param);
     }
