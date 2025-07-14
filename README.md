@@ -56,7 +56,7 @@
 ### ダミーデータ説明
 ## ユーザー一覧
 ## 店舗一覧
-店舗画像はお手数ですが添付のZipファイルを解凍していただき、Storageディレクトリ（src>storage>app>public>shop_images）に保存をお願いいたします。
+店舗画像はお手数ですがReleasesの「Shop Images」のZipファイルをダウンロードしていただき、Storageディレクトリ（src>storage>app>public>shop_images）に保存をお願いいたします。
 ## Stripe決済
 Stripe決済画面ではテスト用カード番号「4242 4242 4242 4242」をお使いください。
 
