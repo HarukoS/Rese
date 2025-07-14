@@ -28,7 +28,7 @@
     - MySQL 8.1
 
 ## テーブル設計
-
+<img width="356" height="743" alt="Tables" src="https://github.com/user-attachments/assets/90e492d7-b49e-47fe-967a-ef449aafaae0" />
 
 ## ER図
 <img width="1041" height="670" alt="er" src="https://github.com/user-attachments/assets/c6de19be-dc65-4ae1-8ff5-09b084f5c84e" />
