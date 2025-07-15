@@ -7,7 +7,6 @@
 ## アプリケーションURL
     - 開発環境：http://localhost/
     - phpMyAdmin:http://localhost:8080/
-    - 本番環境：
 
 ## 機能一覧
     - ユーザー登録（メール認証付き）、ログイン、ログアウト機能
@@ -51,16 +50,23 @@
     4. php artisan key:generate
     5. php artisan migrate
     6. php artisan db:seed
+        *下記の順にシーディングを実行してください
+        1) AreasTableSeeder
+        2) GenresTableSeeder
+        3) UsersTableSeeder
+        4) ShopsTableSeeder
     7. php artisan schedule:run
+    8. php artisan storage:link
 
 ### ダミーデータ説明
 ## ユーザー一覧
+管理者　email: admin@gmail.com
+店舗代表者　email: owner@gmail.com
+ユーザー　email: user@gmail.com
+※パスワードは全て"password"
+
 ## 店舗一覧
 店舗画像はお手数ですがReleasesの「Shop Images」のZipファイルをダウンロードしていただき、Storageディレクトリ（src>storage>app>public>shop_images）に保存をお願いいたします。
 ## Stripe決済
 Stripe決済画面ではテスト用カード番号「4242 4242 4242 4242」をお使いください。
-
-### 店舗代表者新規登録方法
-
-### 店舗新規登録方法
 
