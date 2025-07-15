@@ -60,9 +60,9 @@
 
 ### ダミーデータ説明
 ## ユーザー一覧
-管理者　email: admin@gmail.com
-店舗代表者　email: owner@gmail.com
-ユーザー　email: user@gmail.com
+管理者email: admin@gmail.com　
+店舗代表者email: owner@gmail.com　
+ユーザーemail: user@gmail.com　
 ※パスワードは全て"password"
 ## 店舗一覧
 店舗画像はお手数ですがReleasesの「Shop Images」のZipファイルをダウンロードしていただき、Storageディレクトリ（src>storage>app>public>shop_images）に保存をお願いいたします。
