@@ -19,6 +19,8 @@ RUN apt update \
     --with-freetype --with-jpeg --with-webp --with-xpm \
   && docker-php-ext-install -j$(nproc) gd pdo_mysql zip
 
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
 COPY ./docker/crontab /etc/cron.d/laravel-cron
 
 RUN chmod 0644 /etc/cron.d/laravel-cron
