@@ -64,7 +64,6 @@
 店舗代表者　email: owner@gmail.com
 ユーザー　email: user@gmail.com
 ※パスワードは全て"password"
-
 ## 店舗一覧
 店舗画像はお手数ですがReleasesの「Shop Images」のZipファイルをダウンロードしていただき、Storageディレクトリ（src>storage>app>public>shop_images）に保存をお願いいたします。
 ## Stripe決済
